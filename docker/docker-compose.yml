@@ -1,0 +1,28 @@
+version: "1"
+
+services:
+  python-template-proj: # [must]docker-composeで管理する名前に変更
+    container_name: python-template-container # [optional]container名変更する
+    build:
+      context: ../
+      shm_size: "8gb"
+      dockerfile: docker/Dockerfile
+    shm_size: "12gb" # [optional]必要に応じて修正
+    env_file:
+      - wandb.env # [optional]wandb不要の場合は削除
+    ipc: host
+    entrypoint: bash
+    volumes: # [optional]必要に応じて修正
+      - ./:/opt/
+     # AWSと連携する場合はこちらの参考
+     #  - ../:/opt/code
+     #  - ../data:/opt/ml/input
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+            - capabilities: [gpu]
+    environment:
+      - WANDB_PROJECT=SOME_WB_PROJECT_NAME # [optional]wandbを使用する場合はPROJ_NAME入力
