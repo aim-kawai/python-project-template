@@ -1,0 +1,34 @@
+#-----------#
+# 含めない
+#-----------#
+
+# データ、モデル、結果ログ
+models/*
+outputs/*
+
+# wandb
+container/wandb.env
+
+# dvc
+data/files
+
+
+__pycache__
+.coverage
+.mypy_cache
+.pytest_cache
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.ipynb_checkpoints
+
+#--------#
+# 含める
+#--------#
+!data/README.md
+!models/README.md
+!outputs/README.md

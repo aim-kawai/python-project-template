@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "container"
+version = "0.1.0"
+description = ""
+authors = []
+
+[tool.poetry.dependencies]
+python = "^3.10"
+torch = {version = "^2.0.1+cu118", source = "torch_cu118"}
+torchvision = {version = "^0.15.2+cu118", source = "torch_cu118"}
+wandb = "^0.15.7"
+pycocotools = "^2.0.6"
+pandas = "^2.0.3"
+loguru = "^0.7.0"
+
+[[tool.poetry.source]]
+name = "torch_cu118"
+url = "https://download.pytorch.org/whl/cu118"
+priority = "explicit"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.7.0"
+flake8 = "^6.0.0"
+ipykernel = "^6.25.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
